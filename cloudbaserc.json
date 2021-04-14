@@ -18,7 +18,7 @@
           },
           "containerPort": 1337,
           "volumeMounts": {
-            "/srv/app": "halo-cfs"
+            "/srv/app": "strapi-cfs"
           },
           "envVariables": {
             "DATABASE_CLIENT": "mysql",
