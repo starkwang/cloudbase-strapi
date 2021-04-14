@@ -3,7 +3,50 @@
   "version": "2.0",
   "$schema": "https://framework-1258016615.tcloudbaseapp.com/schema/latest.json",
   "framework": {
-    "name": "app-template",
-    "plugins": {}
+    "name": "cloudbase-strapi",
+    "plugins": {
+      "server": {
+        "use": "@cloudbase/framework-plugin-container",
+        "inputs": {
+          "cpu": 1,
+          "mem": 1,
+          "serviceName": "strapi",
+          "servicePath": "/",
+          "uploadType": "image",
+          "imageInfo": "strapi/strapi",
+          "containerPort": 1337,
+          "volumeMounts": {
+            "/srv/app": "halo-cfs"
+          },
+          "envVariables": {
+            "DATABASE_CLIENT": "mysql",
+            "DATABASE_HOST": "{{env.DATABASE_HOST}}",
+            "DATABASE_PORT": "{{env.DATABASE_PORT}}",
+            "DATABASE_NAME": "strapi",
+            "DATABASE_USERNAME": "{{env.DATABASE_USERNAME}}",
+            "DATABASE_PASSWORD": "{{env.DATABASE_PASSWORD}}",
+            "DATABASE_SSL": "false"
+          }
+        }
+      }
+    },
+    "requirement": {
+      "addons": [
+        {
+          "type": "CynosDB",
+          "name": "cloudbase-strapi-cynosdb",
+          "envMap": {
+            "IP": "DATABASE_HOST",
+            "PORT": "DATABASE_PORT",
+            "USERNAME": "DATABASE_USERNAME",
+            "PASSWORD": "DATABASE_PASSWORD"
+          }
+        },
+        {
+          "type": "CFS",
+          "name": "strapi-cfs"
+        }
+      ]
+    }
   }
 }
