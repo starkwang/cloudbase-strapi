@@ -13,7 +13,9 @@
           "serviceName": "strapi",
           "servicePath": "/",
           "uploadType": "image",
-          "imageInfo": "strapi/strapi",
+          "imageInfo": {
+            "imageUrl": "strapi/strapi"
+          },
           "containerPort": 1337,
           "volumeMounts": {
             "/srv/app": "halo-cfs"
