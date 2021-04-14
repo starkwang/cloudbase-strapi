@@ -14,7 +14,7 @@
           "servicePath": "/",
           "uploadType": "image",
           "imageInfo": {
-            "imageUrl": "strapi/strapi"
+            "imageUrl": "ccr.ccs.tencentyun.com/tcb_public/strapi_strapi:latest"
           },
           "containerPort": 1337,
           "volumeMounts": {
